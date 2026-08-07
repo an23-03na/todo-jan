@@ -7,6 +7,7 @@ import { Button } from "./ui/button";
 import { Check, Plus } from "lucide-react";
 import { useTodo } from "@/hooks/use-todo";
 import { toast } from "sonner";
+import { useSession } from "@/lib/auth-client";
 
 interface Props {
   className?: string;
@@ -17,11 +18,12 @@ export const Todo: React.FC<Props> = (props) => {
   const { createTodo, data, deleteTodo, updateTodo } = useTodo();
   const [text, setText] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+  const {data: dataJan} = useSession()
 
   const addTodo = async () => {
     setLoading(true);
     try {
-      await createTodo(text);
+      await createTodo(text, dataJan?.user?.id || "");
       toast.success("Your todo created successfuly");
     } catch (error: any) {
       console.log(error);

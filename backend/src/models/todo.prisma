@@ -4,9 +4,9 @@ model Todo {
     text      String  @unique
     completed Boolean @default(false)
 
-    todoUser   TodoUser @relation(fields: [todoUserId], references: [id])
-    todoUserId Int
+    user   User @relation(fields: [userId], references: [id])
+    userId String
 
-    createdAt  DateTime  @default(now())
-    updatedAt  DateTime  @updatedAt
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }

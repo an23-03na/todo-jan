@@ -7,8 +7,8 @@ import useSWR from "swr";
 export const useTodo = () => {
   const { data, error, isLoading, mutate } = useSWR(ApiRoutes.TODO, fetcher);
 
-  const createTodo = async (text: string) => {
-    const newTodo = (await axiosInstance.post(ApiRoutes.TODO, { text })).data;
+  const createTodo = async (text: string, userId: string ) => {
+    const newTodo = (await axiosInstance.post(ApiRoutes.TODO, { text, userId })).data;
     mutate([newTodo, ...data]);
   };
 

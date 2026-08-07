@@ -19,14 +19,15 @@ export const todoCreate = async (req: Request, res: Response) => {
       where: {
         id: userId,
       },
-      include: {
-        todoUser: true,
-      },
     });
+
+    if (!user) {
+      return res.status(404).json({ message: "user is not defined" });
+    }
 
     const newTodo = await prisma.todo.create({
       data: {
-        todoUserId: user?.todoUser?.id as number,
+        userId: user.id,
         completed: false,
         text,
       },

@@ -3,14 +3,14 @@ import { prisma } from "../../prisma/prisma-client";
 
 export const todoGet = async (req: Request, res: Response) => {
   try {
-
+    const { userId } = req.params;
 
     const todos = await prisma.todo.findMany({
       where: {
-        todoUserId: 5
-      }
+        userId: userId as string,
+      },
     });
-    
+
     res.status(200).json(todos);
   } catch (error) {
     console.log(error, "Server Error Get");

@@ -7,7 +7,7 @@ model User {
     createdAt     DateTime @db.Timestamptz(3)
     updatedAt     DateTime @db.Timestamptz(3)
 
-    todoUser TodoUser?
-    sessions  Session[]
-    accounts  Account[]
+    todo     Todo[]
+    sessions Session[]
+    accounts Account[]
 }
