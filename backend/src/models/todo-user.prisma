@@ -1,0 +1,11 @@
+model TodoUser {
+    id Int @id @default(autoincrement())
+
+    user   User   @relation(fields: [userId], references: [id])
+    userId String @unique
+
+    todos Todo[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}

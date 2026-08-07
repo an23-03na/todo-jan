@@ -1,0 +1,8 @@
+model Verification {
+    id         String   @id @default(cuid())
+    identifier String
+    value      String
+    expiresAt  DateTime @db.Timestamptz(3)
+    createdAt  DateTime @db.Timestamptz(3)
+    updatedAt  DateTime @db.Timestamptz(3)
+}
