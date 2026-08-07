@@ -17,7 +17,7 @@ export const useLogin = () => {
     await signIn.email({
       email: data.email,
       password: data.password,
-      callbackURL: "http://localhost:3000",
+      callbackURL: process.env.NEXT_PUBLIC_FRONTEND_URL,
       fetchOptions: {
         onSuccess() {
           toast.success("Success Login");
