@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 const publicRoutes = ["/login", "/signup"];
 
 export function middleware(req: NextRequest) {
-  const token = req.cookies.get("auth.session_token")?.value;
+  const token = req.cookies.get("__Secure-auth.session_token")?.value;
   const isPublicRoute = publicRoutes.includes(req.nextUrl.pathname);
 
   if (!token && !isPublicRoute) {
